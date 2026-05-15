@@ -1,10 +1,16 @@
 # conftest.py
 import pytest
-from src.backend.book_store import BookStore
+from src.backend.the_reading_list import BookStore, FavouriteBooks
 
 
-# 1. Share the catalogue fixture globally
 @pytest.fixture
-def catalogue():
+def favourites_manager():
+    """Provides a fresh FavouriteBooks instance for each test."""
+    return FavouriteBooks()
+
+
+# Share the catalogue fixture globally
+@pytest.fixture
+def catalogue(favourites_manager):
     """Provides a fresh BookStore instance for each test."""
-    return BookStore()
+    return BookStore(favourites_manager=favourites_manager)

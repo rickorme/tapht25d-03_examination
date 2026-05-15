@@ -2,4 +2,5 @@ behave
 flake8
 playwright
 pytest
+pytest-mock
 pytest-playwright

@@ -1,5 +1,7 @@
 import pytest
 
+from src.backend.the_reading_list import BookStore
+
 
 @pytest.mark.addbok_01
 @pytest.mark.unit
@@ -100,3 +102,50 @@ def test_add_book__new_book_gets_unique_id(catalogue):
     assert book1.id is not None
     assert book2.id is not None
     assert book1.id != book2.id
+
+
+@pytest.mark.katalog_02
+@pytest.mark.unit
+def test_toggle_favourite__calls_add_when_not_favourited(mocker):
+    '''
+    KATALOG-02-AC-02
+    '''
+    # 1. ARRANGE: Create a mock manager
+    mock_manager = mocker.MagicMock()
+    # Program the mock to say "No, this book is not a favourite yet"
+    mock_manager.is_favourite.return_value = False
+
+    # Inject the mock into a real BookStore
+    catalogue = BookStore(favourites_manager=mock_manager)
+    book = catalogue.add_book(title="Dune", author="Frank Herbert")
+
+    # 2. ACT
+    catalogue.toggle_favourite(book.id)
+
+    # 3. ASSERT
+    # Prove the BookStore correctly told the manager to add the book
+    mock_manager.add.assert_called_once_with(book.id)
+    mock_manager.remove.assert_not_called()
+
+
+@pytest.mark.katalog_03
+@pytest.mark.unit
+def test_toggle_favourite__calls_remove_when_already_favourited(mocker):
+    '''
+    KATALOG-03-AC-02
+    '''
+    # 1. ARRANGE: Create a mock manager
+    mock_manager = mocker.MagicMock()
+    # Program the mock to say "This book is already a favourite"
+    mock_manager.is_favourite.return_value = True
+
+    catalogue = BookStore(favourites_manager=mock_manager)
+    book = catalogue.add_book(title="Dune", author="Frank Herbert")
+
+    # 2. ACT
+    catalogue.toggle_favourite(book.id)
+
+    # 3. ASSERT
+    # Prove the BookStore correctly told the manager to remove the book
+    mock_manager.remove.assert_called_once_with(book.id)
+    mock_manager.add.assert_not_called()
