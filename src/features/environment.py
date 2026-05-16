@@ -13,14 +13,21 @@ def before_all(context):
 def before_scenario(context, scenario):
     # The scenario fixture is created from a feature file, we don't typically need it for anything.
     # Open a new page, to prevent cookies to leak between tests.
-    # Set default timeout to something appropriate. Close the page in after_scenario.
     context.page = context.browser.new_page()
     context.page.set_default_timeout(100)
-    context.base_url = "https://forverkliga.se/JavaScript/whose-turn/"
+
+    from pages.base_page import BasePage
+    from pages.katalog_page import KatalogPage
+    from pages.favourites_page import FavouritesPage
+
+    context.base_page = BasePage(context.page)
+    context.katalog_page = KatalogPage(context.page)
+    context.favourites_page = FavouritesPage(context.page)
 
 
 # Runs directly after each scenario - clean up to avoid memory leaks
 def after_scenario(context, scenario):
+    # Close the page if it exists after each scenario.
     if context.page:
         context.page.close()
 
