@@ -19,7 +19,7 @@ class BasePage:
         nav_button_test_id = "catalog"
         self.navigate_by_button(nav_button_test_id)
 
-    def navigate_to_addbok(self):
+    def navigate_to_add_book(self):
         nav_button_test_id = "add-book"
         self.navigate_by_button(nav_button_test_id)
 

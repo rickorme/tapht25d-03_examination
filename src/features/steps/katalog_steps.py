@@ -33,7 +33,7 @@ def step_check_heart_state(context, title, new_heart_state):
 
 
 @then(u'"{title}" should be "{expected_status}" on the "Favourites" page')
-def step_check_book_status_on_mina_böcker(context, title, expected_status):
+def step_check_book_status_on_favourites(context, title, expected_status):
     context.base_page.navigate_to_favourites()
     actual_status = context.favourites_page.is_book_in_list(title)
     assert actual_status == expected_status, f"Expected book '{title}' to be '{expected_status}' on the Favourites page, but it was '{actual_status}'"
