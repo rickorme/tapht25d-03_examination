@@ -3,6 +3,10 @@ This is the final exam project of the course "TAPHT25D: Testautomatisering och t
 
 The application being tested, "Läslistan" can be found [here](https://tap-ht25-testverktyg.github.io/exam/).
 
+Answers to theory questions can be found in this file in the root folder:
+
+    ANSWERS.md
+
 # Starting the project
 
 ## Clone the GitHub repo
@@ -50,9 +54,9 @@ Then, install the required Playwright system dependencies using your native pack
 ## Backend logic developed and tested using TDD (Test Driven Development)
 
 ### User stories and acceptance criteria
-User stories and acceptance criteria were written to cover the functionality being tested and developed. These can be found here:
+User stories and acceptance criteria were written to cover the functionality being tested and developed. These can be found in the root folder in file:
 
-    documents/STORIES.md
+    STORIES.md
 
 ### Development
 Three new classes were developed for the future integration of new backend logic. These were developed using TDD as the development methodology.
