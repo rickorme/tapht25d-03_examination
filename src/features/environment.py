@@ -20,11 +20,13 @@ def before_scenario(context, scenario):
     from pages.katalog_page import KatalogPage
     from pages.favourites_page import FavouritesPage
     from pages.add_book_page import AddBookPage
+    from pages.statistics_page import StatisticsPage
 
     context.base_page = BasePage(context.page)
     context.katalog_page = KatalogPage(context.page)
     context.favourites_page = FavouritesPage(context.page)
     context.add_book_page = AddBookPage(context.page)
+    context.statistics_page = StatisticsPage(context.page)
 
 
 # Runs directly after each scenario - clean up to avoid memory leaks

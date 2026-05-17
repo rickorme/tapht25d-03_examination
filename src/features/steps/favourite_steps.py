@@ -38,3 +38,7 @@ def check_favourited_books_list(context):
         expected_status = "present"
         actual_status = context.favourites_page.is_book_in_list(title)
         assert actual_status == expected_status, f"Expected book '{title}' to be '{expected_status}' on the Favourites page, but it was '{actual_status}'"
+
+    num_books_in_list = context.favourites_page.get_favourite_count()
+    num_added_favs = len(context.favourited_books)
+    assert num_books_in_list == num_added_favs, f"Expected {num_added_favs} favourites, got {num_books_in_list}"
