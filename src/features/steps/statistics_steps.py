@@ -28,6 +28,8 @@ def step_navigate_to_page(context, page_name):
         context.base_page.navigate_to_statistics()
     elif page_name == "Add Book":
         context.base_page.navigate_to_add_book()
+    elif page_name == "Favourites":
+        context.base_page.navigate_to_favourites()
     else:
         raise ValueError(f"Navigation for '{page_name}' is not defined.")
 

@@ -80,3 +80,17 @@
 
 - >STAT-01-AC-01: The count of books represents the total number of books on the catalogue, the initial value is 13
 - >STAT-01-AC-01: The count of favourites represents the total number of favourited books in the catalogue, the initial value is 0
+
+---
+## Navigation
+
+### NAV-01-US
+    As a user
+    I want to use the main navigation menu
+    So that I can switch between the different views of the application
+
+#### Acceptance Criteria
+
+- >NAV-01-AC-01: Clicking a navigation button switches the view to the corresponding page.
+- >NAV-01-AC-02: The navigation button for the currently active page is disabled.
+- >NAV-01-AC-03: The navigation buttons for all non-active pages remain enabled.
